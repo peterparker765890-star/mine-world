@@ -1,224 +1,112 @@
-const progressBar =
-  document.getElementById("progressBar");
+const progressBar = document.getElementById("progressBar");
+const stars = document.getElementById("stars");
+const rain = document.getElementById("rain");
 
-
-/* =========================
-   NORMAL SCROLL PROGRESS
-========================= */
+/* SCROLL PROGRESS */
 
 function updateProgress() {
+  const scrollTop = window.scrollY;
+  const height =
+    document.documentElement.scrollHeight - window.innerHeight;
 
-  const scrollTop =
-    window.scrollY;
+  const progress = height > 0
+    ? (scrollTop / height) * 100
+    : 0;
 
-  const documentHeight =
-    document.documentElement.scrollHeight
-    - window.innerHeight;
-
-  if (documentHeight <= 0) return;
-
-  const percentage =
-    (scrollTop / documentHeight) * 100;
-
-  progressBar.style.width =
-    `${percentage}%`;
+  progressBar.style.width = `${progress}%`;
 }
 
-window.addEventListener(
-  "scroll",
-  updateProgress,
-  { passive: true }
-);
+window.addEventListener("scroll", updateProgress, {
+  passive: true
+});
 
 updateProgress();
 
 
-/* =========================
-   STAR FIELD
-========================= */
+/* STARS */
 
-const stars =
-  document.getElementById("stars");
-
-for (let i = 0; i < 110; i++) {
-
-  const star =
-    document.createElement("span");
+for (let i = 0; i < 130; i++) {
+  const star = document.createElement("span");
 
   star.className = "star";
-
-  star.style.left =
-    `${Math.random() * 100}%`;
-
-  star.style.top =
-    `${Math.random() * 100}%`;
-
-  const size =
-    Math.random() * 2 + 1;
-
-  star.style.width =
-    `${size}px`;
-
-  star.style.height =
-    `${size}px`;
-
-  star.style.animationDelay =
-    `${Math.random() * 4}s`;
-
-  star.style.animationDuration =
-    `${2 + Math.random() * 4}s`;
+  star.style.left = `${Math.random() * 100}%`;
+  star.style.top = `${Math.random() * 100}%`;
+  star.style.animationDelay = `${Math.random() * 4}s`;
+  star.style.animationDuration = `${2 + Math.random() * 4}s`;
 
   stars.appendChild(star);
 }
 
 
-/* =========================
-   RAIN
-========================= */
+/* RAIN */
 
-const rain =
-  document.getElementById("rain");
+for (let i = 0; i < 65; i++) {
+  const drop = document.createElement("span");
 
-for (let i = 0; i < 70; i++) {
-
-  const drop =
-    document.createElement("span");
-
-  drop.className =
-    "raindrop";
-
-  drop.style.left =
-    `${Math.random() * 100}%`;
-
-  drop.style.animationDuration =
-    `${0.7 + Math.random() * 1.1}s`;
-
-  drop.style.animationDelay =
-    `${Math.random() * 2}s`;
-
-  drop.style.opacity =
-    `${0.15 + Math.random() * 0.4}`;
+  drop.className = "raindrop";
+  drop.style.left = `${Math.random() * 100}%`;
+  drop.style.animationDelay = `${Math.random() * 5}s`;
+  drop.style.animationDuration = `${0.8 + Math.random() * 1.2}s`;
 
   rain.appendChild(drop);
 }
 
 
-/* =========================
-   SMOOTH ANCHOR LINKS
-========================= */
+/* SMOOTH NAVIGATION */
 
-document
-  .querySelectorAll('a[href^="#"]')
-  .forEach(link => {
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", event => {
+    const targetId = link.getAttribute("href");
+    const target = document.querySelector(targetId);
 
-    link.addEventListener("click", event => {
+    if (!target) return;
 
-      const id =
-        link.getAttribute("href");
+    event.preventDefault();
 
-      const target =
-        document.querySelector(id);
-
-      if (!target) return;
-
-      event.preventDefault();
-
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
     });
-
   });
+});
 
 
-/* =========================
-   CLICK SPARKLES
-========================= */
+/* CINEMATIC CLICK SPARKLES */
 
-document.addEventListener(
-  "click",
-  event => {
+document.addEventListener("click", event => {
+  if (event.target.closest("a")) return;
 
-    if (event.target.closest("a")) {
-      return;
+  const sparkle = document.createElement("span");
+
+  sparkle.style.position = "fixed";
+  sparkle.style.left = `${event.clientX}px`;
+  sparkle.style.top = `${event.clientY}px`;
+  sparkle.style.width = "5px";
+  sparkle.style.height = "5px";
+  sparkle.style.borderRadius = "50%";
+  sparkle.style.background = "#f0abfc";
+  sparkle.style.boxShadow = "0 0 15px #f0abfc";
+  sparkle.style.pointerEvents = "none";
+  sparkle.style.zIndex = "200";
+
+  document.body.appendChild(sparkle);
+
+  sparkle.animate(
+    [
+      {
+        opacity: 1,
+        transform: "scale(1) translate(0, 0)"
+      },
+      {
+        opacity: 0,
+        transform: "scale(0) translate(0, -25px)"
+      }
+    ],
+    {
+      duration: 700,
+      easing: "ease-out"
     }
+  );
 
-    for (let i = 0; i < 8; i++) {
-
-      const sparkle =
-        document.createElement("span");
-
-      sparkle.style.position =
-        "fixed";
-
-      sparkle.style.left =
-        `${event.clientX}px`;
-
-      sparkle.style.top =
-        `${event.clientY}px`;
-
-      sparkle.style.width = "5px";
-      sparkle.style.height = "5px";
-
-      sparkle.style.borderRadius =
-        "50%";
-
-      sparkle.style.background =
-        i % 2 === 0
-          ? "#c084fc"
-          : "#f0abfc";
-
-      sparkle.style.pointerEvents =
-        "none";
-
-      sparkle.style.zIndex = "999";
-
-      const angle =
-        Math.random() * Math.PI * 2;
-
-      const distance =
-        25 + Math.random() * 45;
-
-      const x =
-        Math.cos(angle) * distance;
-
-      const y =
-        Math.sin(angle) * distance;
-
-      sparkle.animate(
-        [
-          {
-            transform:
-              "translate(-50%,-50%) scale(1)",
-            opacity: 1
-          },
-
-          {
-            transform:
-              `translate(
-                calc(-50% + ${x}px),
-                calc(-50% + ${y}px)
-              ) scale(0)`,
-            opacity: 0
-          }
-        ],
-        {
-          duration: 650,
-          easing:
-            "cubic-bezier(.2,.7,.2,1)"
-        }
-      );
-
-      document.body.appendChild(
-        sparkle
-      );
-
-      setTimeout(() => {
-        sparkle.remove();
-      }, 700);
-
-    }
-
-  });
+  setTimeout(() => sparkle.remove(), 700);
+});
