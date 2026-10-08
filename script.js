@@ -1,277 +1,215 @@
-const pages = [
-  ...document.querySelectorAll(".page")
-];
+const scenes = [...document.querySelectorAll(".scene")];
+const progressBar = document.getElementById("progressBar");
 
-let current = 0;
+let currentIndex = 0;
 
-const progress = document.getElementById("progressBar");
-
-
-/* ================================
-   PAGE TRANSITION
-================================ */
-
-function goTo(id) {
-
+function showScene(id) {
   const target = document.getElementById(id);
 
   if (!target) return;
 
-  const nextIndex = pages.indexOf(target);
-
-  if (nextIndex === -1) return;
-
-  pages[current].classList.remove("active");
-
-  setTimeout(() => {
-
-    target.classList.add("active");
-
-    current = nextIndex;
-
-    updateProgress();
-
-  }, 250);
-}
-
-
-/* ================================
-   BUTTONS
-================================ */
-
-document
-  .querySelectorAll("[data-next]")
-  .forEach(button => {
-
-    button.addEventListener("click", () => {
-
-      goTo(button.dataset.next);
-
-    });
-
+  scenes.forEach(scene => {
+    scene.classList.remove("active");
   });
 
+  target.classList.add("active");
 
-/* ================================
-   PROGRESS
-================================ */
+  currentIndex = scenes.indexOf(target);
 
-function updateProgress() {
+  const progress =
+    (currentIndex / (scenes.length - 1)) * 100;
 
-  const percentage =
-    (current / (pages.length - 1)) * 100;
+  progressBar.style.width = `${progress}%`;
 
-  progress.style.width = percentage + "%";
-}
-
-updateProgress();
-
-
-/* ================================
-   RAIN
-================================ */
-
-const rain = document.getElementById("rain");
-
-function createRain() {
-
-  const drop = document.createElement("i");
-
-  drop.style.position = "fixed";
-
-  drop.style.left =
-    Math.random() * 100 + "vw";
-
-  drop.style.top = "-20px";
-
-  drop.style.width =
-    Math.random() * 1.5 + "px";
-
-  drop.style.height =
-    Math.random() * 25 + 15 + "px";
-
-  drop.style.background =
-    "rgba(180,160,220,.18)";
-
-  drop.style.transform =
-    "rotate(15deg)";
-
-  drop.style.pointerEvents =
-    "none";
-
-  drop.style.zIndex = "2";
-
-  drop.style.transition =
-    "transform linear";
-
-  const duration =
-    Math.random() * 1.2 + .7;
-
-  drop.style.transitionDuration =
-    duration + "s";
-
-  rain.appendChild(drop);
-
-  requestAnimationFrame(() => {
-
-    drop.style.transform =
-      `translate(${Math.random() * 40 - 20}vw,110vh) rotate(15deg)`;
-
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
-
-  setTimeout(() => {
-
-    drop.remove();
-
-  }, duration * 1000);
 }
 
-setInterval(createRain, 85);
+document.querySelectorAll("[data-next]").forEach(button => {
+  button.addEventListener("click", () => {
+    showScene(button.dataset.next);
+  });
+});
 
 
-/* ================================
-   STARS
-================================ */
+/* STAR FIELD */
 
 const stars = document.getElementById("stars");
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 110; i++) {
 
   const star = document.createElement("span");
 
-  star.style.position = "fixed";
+  star.className = "star";
 
-  star.style.left =
-    Math.random() * 100 + "vw";
+  star.style.left = `${Math.random() * 100}%`;
+  star.style.top = `${Math.random() * 100}%`;
 
-  star.style.top =
-    Math.random() * 100 + "vh";
+  const size = Math.random() * 2 + 1;
 
-  const size =
-    Math.random() * 2 + 1;
+  star.style.width = `${size}px`;
+  star.style.height = `${size}px`;
 
-  star.style.width =
-    size + "px";
+  star.style.animationDelay =
+    `${Math.random() * 4}s`;
 
-  star.style.height =
-    size + "px";
-
-  star.style.borderRadius =
-    "50%";
-
-  star.style.background =
-    "#ffffff";
-
-  star.style.opacity =
-    Math.random() * .6;
-
-  star.style.boxShadow =
-    "0 0 8px rgba(210,190,255,.5)";
-
-  star.style.animation =
-    `twinkle ${Math.random() * 4 + 2}s infinite`;
+  star.style.animationDuration =
+    `${2 + Math.random() * 4}s`;
 
   stars.appendChild(star);
 }
 
 
-/* ================================
-   TWINKLE ANIMATION
-================================ */
+/* RAIN */
 
-const style = document.createElement("style");
+const rain = document.getElementById("rain");
 
-style.innerHTML = `
-@keyframes twinkle {
-  0%,100% {
-    opacity:.15;
-    transform:scale(.8);
-  }
+for (let i = 0; i < 70; i++) {
 
-  50% {
-    opacity:.8;
-    transform:scale(1.3);
-  }
+  const drop = document.createElement("span");
+
+  drop.className = "raindrop";
+
+  drop.style.left = `${Math.random() * 100}%`;
+
+  drop.style.animationDuration =
+    `${.7 + Math.random() * 1.1}s`;
+
+  drop.style.animationDelay =
+    `${Math.random() * 2}s`;
+
+  drop.style.opacity =
+    `${.15 + Math.random() * .4}`;
+
+  rain.appendChild(drop);
 }
-`;
-
-document.head.appendChild(style);
 
 
-/* ================================
-   TOUCH / CLICK SPARKLES
-================================ */
+/* CLICK SPARKLES */
 
-document.addEventListener("pointerdown", event => {
+document.addEventListener("click", event => {
 
-  const sparkle =
-    document.createElement("span");
+  for (let i = 0; i < 8; i++) {
 
-  sparkle.style.position = "fixed";
+    const sparkle = document.createElement("span");
 
-  sparkle.style.left =
-    event.clientX + "px";
+    sparkle.style.position = "fixed";
+    sparkle.style.left = `${event.clientX}px`;
+    sparkle.style.top = `${event.clientY}px`;
 
-  sparkle.style.top =
-    event.clientY + "px";
+    sparkle.style.width = "5px";
+    sparkle.style.height = "5px";
+    sparkle.style.borderRadius = "50%";
 
-  sparkle.style.width = "6px";
-  sparkle.style.height = "6px";
+    sparkle.style.background =
+      i % 2 === 0 ? "#c084fc" : "#f0abfc";
 
-  sparkle.style.borderRadius = "50%";
+    sparkle.style.pointerEvents = "none";
+    sparkle.style.zIndex = "999";
 
-  sparkle.style.background = "#ffffff";
+    const angle =
+      Math.random() * Math.PI * 2;
 
-  sparkle.style.boxShadow =
-    "0 0 18px 6px rgba(190,150,255,.7)";
+    const distance =
+      25 + Math.random() * 45;
 
-  sparkle.style.pointerEvents = "none";
+    const x =
+      Math.cos(angle) * distance;
 
-  sparkle.style.zIndex = "999";
+    const y =
+      Math.sin(angle) * distance;
 
-  sparkle.style.transition =
-    "all 1s ease";
+    sparkle.animate(
+      [
+        {
+          transform: "translate(-50%,-50%) scale(1)",
+          opacity: 1
+        },
+        {
+          transform:
+            `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(0)`,
+          opacity: 0
+        }
+      ],
+      {
+        duration: 650,
+        easing: "cubic-bezier(.2,.7,.2,1)"
+      }
+    );
 
-  document.body.appendChild(sparkle);
+    document.body.appendChild(sparkle);
 
-  requestAnimationFrame(() => {
-
-    sparkle.style.transform =
-      "translateY(-45px) scale(0)";
-
-    sparkle.style.opacity = "0";
-
-  });
-
-  setTimeout(() => {
-
-    sparkle.remove();
-
-  }, 1000);
-
+    setTimeout(() => {
+      sparkle.remove();
+    }, 700);
+  }
 });
 
 
-/* ================================
-   KEYBOARD
-================================ */
+/* KEYBOARD NAVIGATION */
 
 document.addEventListener("keydown", event => {
 
-  if (
-    event.key === "ArrowRight" ||
-    event.key === "Enter"
-  ) {
+  if (event.key === "ArrowDown" || event.key === " ") {
 
-    const next =
-      pages[current + 1];
+    if (currentIndex < scenes.length - 1) {
+      event.preventDefault();
 
-    if (next) {
-
-      goTo(next.id);
-
+      showScene(
+        scenes[currentIndex + 1].id
+      );
     }
-
   }
 
+  if (event.key === "ArrowUp") {
+
+    if (currentIndex > 0) {
+      event.preventDefault();
+
+      showScene(
+        scenes[currentIndex - 1].id
+      );
+    }
+  }
 });
+
+
+/* TOUCH SWIPE */
+
+let touchStartY = 0;
+
+document.addEventListener("touchstart", event => {
+  touchStartY = event.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener("touchend", event => {
+
+  const touchEndY =
+    event.changedTouches[0].clientY;
+
+  const difference =
+    touchStartY - touchEndY;
+
+  if (Math.abs(difference) < 70) return;
+
+  if (difference > 0 && currentIndex < scenes.length - 1) {
+
+    showScene(
+      scenes[currentIndex + 1].id
+    );
+
+  } else if (difference < 0 && currentIndex > 0) {
+
+    showScene(
+      scenes[currentIndex - 1].id
+    );
+  }
+
+}, { passive: true });
+
+
+/* INITIAL STATE */
+
+progressBar.style.width = "0%";
