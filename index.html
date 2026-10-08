@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>For Quiet — From Jack</title>
+  <meta name="theme-color" content="#10051d">
+  <title>For Quiet — A World by Jack</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div id="rain"></div>
   <div id="stars"></div>
-  <div id="petals"></div>
+  <div id="rain"></div>
+  <div class="cursor-glow"></div>
 
   <div class="progress">
     <span id="progressBar"></span>
@@ -26,426 +25,396 @@
 
   <main>
 
-    <!-- ================= INTRO ================= -->
+    <!-- INTRO -->
+    <section class="scene active" id="intro">
 
-    <section class="page active" id="intro">
-
-      <div class="intro-orbit"></div>
+      <div class="intro-orb"></div>
 
       <div class="intro-content">
+        <p class="eyebrow">A LITTLE WORLD BY JACK</p>
 
-        <div class="small-symbol">✦</div>
+        <h1>
+          For <span>Quiet</span>
+        </h1>
 
-        <p class="overline">A world built by Jack</p>
-
-        <h1>Quiet</h1>
-
-        <p class="intro-sub">
-          There is something I have been<br>
-          wanting to tell you.
+        <p class="subtitle">
+          There are things I could say in a thousand messages...
+          <br>
+          but somehow, I wanted to build you a little world instead.
         </p>
 
-        <button class="enter" data-next="her-world">
-          Enter my little world
-          <span>↗</span>
+        <button class="enter-btn" data-next="her-world">
+          <span>Enter my little world</span>
+          <b>→</b>
         </button>
-
       </div>
 
-      <div class="scroll-hint">
-        <span></span>
-        slowly...
-      </div>
-
+      <div class="scroll-hint">SCROLL INTO MY HEART</div>
     </section>
 
 
-    <!-- ================= HER WORLD ================= -->
+    <!-- HER WORLD -->
+    <section class="scene" id="her-world">
 
-    <section class="page" id="her-world">
+      <div class="section-inner">
 
-      <div class="world-content">
-
-        <p class="overline">Chapter 01 · Her</p>
+        <p class="eyebrow">THE GIRL I KNOW</p>
 
         <h2>
-          Somehow,<br>
-          you became<br>
-          <em>my favorite world.</em>
+          Somehow, you became<br>
+          <span>my favorite world.</span>
         </h2>
 
-        <div class="world-grid">
+        <p class="section-intro">
+          Maybe it's the little things.
+          The things you probably don't even realize I notice.
+        </p>
 
-          <div class="memory-card purple">
-            <div class="card-icon">☂</div>
-            <span>Rain</span>
+        <div class="memory-grid">
+
+          <article class="memory-card rain-card">
+            <div class="card-icon">☔</div>
+            <h3>Rain</h3>
             <p>
-              The kind of weather<br>
-              that makes everything<br>
-              feel softer.
+              You love the rain.
+              And somehow every rainy evening makes me imagine
+              sitting beside you, saying absolutely nothing.
             </p>
-          </div>
+          </article>
 
-          <div class="memory-card cat">
+          <article class="memory-card cat-card">
             <div class="card-icon">🐈</div>
-            <span>Cats</span>
+            <h3>Cats</h3>
             <p>
-              Because somehow<br>
-              even the little things<br>
-              remind me of you.
+              You and your cats.
+              A tiny world of your own...
+              and somehow I want a place inside it.
             </p>
-          </div>
+          </article>
 
-          <div class="memory-card sleep">
-            <div class="card-icon">☾</div>
-            <span>Sleep</span>
+          <article class="memory-card sleep-card">
+            <div class="card-icon">☁️</div>
+            <h3>Your sleepy little world</h3>
             <p>
-              You could sleep forever<br>
-              and honestly...
-              I'd let you.
+              You could sleep for half the day and still somehow
+              make me smile.
+              I don't know how you do it.
             </p>
-          </div>
+          </article>
 
-          <div class="memory-card anger">
+          <article class="memory-card anger-card">
             <div class="card-icon">♡</div>
-            <span>Even your anger</span>
+            <h3>Even your anger</h3>
             <p>
-              Yes, even that.<br>
-              I somehow love<br>
-              every version of you.
+              I somehow like even that.
+              Although I'll admit...
+              sometimes your anger scares me.
             </p>
-          </div>
+          </article>
 
         </div>
 
-        <button class="text-button" data-next="jack">
-          But you should know something
-          <span>→</span>
+        <button class="next-btn" data-next="jack">
+          There's something about me too <span>↓</span>
         </button>
 
       </div>
-
     </section>
 
 
-    <!-- ================= JACK ================= -->
+    <!-- JACK -->
+    <section class="scene dark-scene" id="jack">
 
-    <section class="page dark-page" id="jack">
+      <div class="section-inner centered">
 
-      <div class="jack-content">
-
-        <p class="overline">Chapter 02 · Jack</p>
-
-        <div class="giant-heart">
-          ♡
-        </div>
+        <p class="eyebrow">AND THEN THERE'S ME</p>
 
         <h2>
-          And then there's<br>
-          <span>me.</span>
+          Your <span>crazy stupid.</span>
         </h2>
 
         <div class="jack-lines">
 
           <p>
-            The idiot who wants to cook for you.
+            Yes...
+            <strong>the crazy stupid one.</strong>
           </p>
 
           <p>
-            The idiot who wants to sleep on your lap.
+            The one who wants to cook for you
+            just because seeing you happy would be enough.
           </p>
 
           <p>
-            The idiot who can't stay away from you.
+            The one who would happily fall asleep
+            on your lap and forget about the entire world.
           </p>
 
           <p>
-            The idiot who somehow became
-            completely addicted to your presence.
+            The one who can't really stay away from you.
+          </p>
+
+          <p class="highlight-line">
+            Maybe I'm a little addicted to your presence.
+          </p>
+
+          <p>
+            And honestly...
+            <strong>I'm not even sorry.</strong>
           </p>
 
         </div>
 
-        <div class="quiet-line">
-          And I'm not even sorry.
-        </div>
-
-        <button class="text-button" data-next="fear">
-          There's one thing I'm afraid of
-          <span>→</span>
+        <button class="next-btn" data-next="fear">
+          But there's one thing I'm afraid of <span>↓</span>
         </button>
 
       </div>
-
     </section>
 
 
-    <!-- ================= FEAR ================= -->
+    <!-- FEAR -->
+    <section class="scene fear-scene" id="fear">
 
-    <section class="page" id="fear">
+      <div class="heartbeat"></div>
 
-      <div class="fear-content">
+      <div class="section-inner centered">
 
-        <p class="overline">Chapter 03 · The truth</p>
+        <p class="eyebrow">THE ONE THING I DON'T SAY</p>
 
         <h2>
-          I have a fear.
+          I have <span>a fear.</span>
         </h2>
 
-        <div class="breathing-heart">
-          ♥
+        <div class="fear-text">
+
+          <p>
+            Sometimes I wonder...
+          </p>
+
+          <p>
+            What if one day you look at me
+            and decide you don't want me anymore?
+          </p>
+
+          <p>
+            What if the person I can't stay away from
+            becomes the person I have to learn to live without?
+          </p>
+
+          <p class="small-fear">
+            I probably don't say it.
+            <br>
+            But secretly...
+            <strong>I'm always afraid of losing you.</strong>
+          </p>
+
         </div>
 
-        <p class="fear-text">
-          Not the kind of fear that comes from darkness.
-        </p>
-
-        <p class="fear-text">
-          I'm afraid that one day<br>
-          you might look at me...
-        </p>
-
-        <p class="fear-highlight">
-          and decide you don't want me anymore.
-        </p>
-
-        <p class="fear-small">
-          Because no matter how much I love your anger,<br>
-          secretly, I'm always afraid of losing you.
-        </p>
-
-        <button class="text-button" data-next="promise">
-          So here's my promise
-          <span>→</span>
+        <button class="next-btn" data-next="promise">
+          So let me tell you something <span>↓</span>
         </button>
 
       </div>
-
     </section>
 
 
-    <!-- ================= PROMISE ================= -->
+    <!-- PROMISE -->
+    <section class="scene promise-scene" id="promise">
 
-    <section class="page promise-page" id="promise">
+      <div class="moon-glow"></div>
 
-      <div class="promise-content">
+      <div class="section-inner centered">
 
-        <p class="overline">Chapter 04 · My promise</p>
+        <p class="eyebrow">MY PROMISE</p>
 
-        <div class="quote-mark">“</div>
-
-        <h2>
+        <h2 class="promise-main">
           I wanna be yours
         </h2>
 
-        <p class="promise-line">
+        <p class="promise-sub">
           until I live,
-        </p>
-
-        <p class="promise-line">
+          <br>
           until I die.
         </p>
 
-        <div class="quote-mark closing">”</div>
+        <div class="promise-line"></div>
 
-        <p class="promise-small">
-          Not because I want to own your world.<br>
+        <p class="promise-explain">
+          Not because I want to own your world.
+          <br><br>
           Because I want to be a part of it.
         </p>
 
-        <button class="text-button" data-next="citadel">
-          There is a place I want to build
-          <span>→</span>
+        <button class="next-btn" data-next="citadel">
+          There's one more dream <span>↓</span>
         </button>
 
       </div>
-
     </section>
 
 
-    <!-- ================= CITADEL ================= -->
+    <!-- CITADEL -->
+    <section class="scene citadel-scene" id="citadel">
 
-    <section class="page citadel-page" id="citadel">
+      <div class="section-inner centered">
 
-      <div class="citadel-sky">
+        <p class="eyebrow">ONE DAY</p>
 
-        <div class="citadel-stars"></div>
+        <h2>
+          <span>Salma's Citadel</span>
+        </h2>
 
-        <div class="castle-glow"></div>
+        <p class="citadel-intro">
+          That's what I want to call our home.
+        </p>
 
         <div class="castle">
 
-          <div class="tower tower-left">
-            <div class="roof"></div>
-            <div class="window"></div>
-          </div>
-
-          <div class="tower tower-center">
-            <div class="roof"></div>
-            <div class="window"></div>
-          </div>
-
-          <div class="tower tower-right">
-            <div class="roof"></div>
-            <div class="window"></div>
-          </div>
+          <div class="castle-moon"></div>
 
           <div class="castle-body">
+            <div class="tower left-tower">
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
 
-            <div class="castle-door"></div>
+            <div class="castle-center">
+              <div class="castle-window"></div>
+              <div class="castle-door"></div>
+            </div>
 
-            <div class="castle-window w1"></div>
-            <div class="castle-window w2"></div>
-            <div class="castle-window w3"></div>
-
+            <div class="tower right-tower">
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
           </div>
 
         </div>
 
-        <div class="citadel-content">
-
-          <p class="overline">The dream</p>
-
-          <h2>
-            Salma's
-            <span>Citadel</span>
-          </h2>
+        <div class="citadel-text">
 
           <p>
-            One day, I want to build<br>
-            a home so beautiful<br>
-            that it feels like it was<br>
-            made only for you.
+            One day, I want to build a home
+            so beautiful that it feels like
+            it was made only for you.
           </p>
 
-          <div class="citadel-line"></div>
-
-          <p class="citadel-small">
-            You won't have to be anything<br>
-            except yourself there.
+          <p>
+            A place where you don't have to pretend,
+            impress anyone, or become someone else.
           </p>
 
-          <p class="princess">
-            Because I want my girl<br>
-            to live like a princess.
+          <p class="princess-line">
+            You just get to be yourself.
+            <br>
+            <strong>My girl. My princess.</strong>
           </p>
-
-          <button class="text-button light" data-next="terrace">
-            There's one final dream
-            <span>→</span>
-          </button>
 
         </div>
 
-      </div>
+        <button class="next-btn" data-next="terrace">
+          And then... there's my favorite dream <span>↓</span>
+        </button>
 
+      </div>
     </section>
 
 
-    <!-- ================= FINAL TERRACE ================= -->
+    <!-- FINAL TERRACE -->
+    <section class="scene final-scene" id="terrace">
 
-    <section class="page terrace-page" id="terrace">
-
-      <div class="night">
-
-        <div class="moon"></div>
+      <div class="night-sky">
+        <div class="giant-moon"></div>
         <div class="moon-halo"></div>
+        <div class="cloud cloud-one"></div>
+        <div class="cloud cloud-two"></div>
+        <div class="cloud cloud-three"></div>
+      </div>
 
-        <div class="cloud cloud-1"></div>
-        <div class="cloud cloud-2"></div>
+      <div class="far-city">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+      </div>
 
-        <div class="far-city">
-          <i></i><i></i><i></i><i></i><i></i>
-          <i></i><i></i><i></i><i></i><i></i>
+      <div class="terrace-floor"></div>
+
+      <div class="terrace-railing">
+        <div class="rail-top"></div>
+        <div class="rail-bar"></div>
+        <div class="rail-bar"></div>
+        <div class="rail-bar"></div>
+      </div>
+
+      <!-- Jack -->
+      <div class="person jack-person">
+        <div class="head jack-head">
+          <div class="hair"></div>
+          <div class="spectacles">
+            <span></span>
+            <span></span>
+          </div>
         </div>
+        <div class="body"></div>
+      </div>
 
-        <div class="terrace-floor"></div>
-
-        <div class="terrace-railing">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+      <!-- Quiet -->
+      <div class="person quiet-person">
+        <div class="head quiet-head">
+          <div class="niqab"></div>
+          <div class="eyes"></div>
         </div>
+        <div class="body"></div>
+      </div>
 
-        <!-- Quiet -->
+      <div class="final-message">
 
-        <div class="silhouette quiet-person">
+        <p class="eyebrow">MY FAVORITE DREAM</p>
 
-          <div class="person-head"></div>
+        <h2>
+          One day...
+        </h2>
 
-          <div class="person-hair"></div>
+        <p>
+          I want to sit beside you<br>
+          on a quiet terrace.
+        </p>
 
-          <div class="person-body"></div>
+        <p>
+          I want the city to sleep below us,<br>
+          the rain to disappear into the night,<br>
+          and the moon to be the only light<br>
+          we really need.
+        </p>
 
-        </div>
+        <p class="final-soft">
+          No big plans.<br>
+          No perfect words.
+        </p>
 
-        <!-- Jack -->
+        <p class="final-last">
+          Just you, me...
+          <br>
+          <span>and the moon.</span>
+        </p>
 
-        <div class="silhouette jack-person">
+        <div class="signature">— Jack</div>
 
-          <div class="person-head"></div>
+      </div>
 
-          <div class="person-body"></div>
-
-        </div>
-
-
-        <div class="final-message">
-
-          <p class="overline">My biggest little dream</p>
-
-          <h2>
-            One day...
-          </h2>
-
-          <p class="dream-text">
-            I want to sit beside you<br>
-            on a quiet terrace.
-          </p>
-
-          <p class="dream-text">
-            I want the city to sleep below us,<br>
-            the rain to disappear into the night,<br>
-            and the moon to be the only light<br>
-            we really need.
-          </p>
-
-          <div class="final-star">✦</div>
-
-          <p class="final-soft">
-            Maybe you'll fall asleep on my shoulder.<br>
-            Maybe I'll just sit there watching you.
-          </p>
-
-          <p class="final-big">
-            No big plans.<br>
-            No perfect words.
-          </p>
-
-          <p class="final-ending">
-            Just you, me...<br>
-            and the moon.
-          </p>
-
-          <div class="moon-emoji">☾</div>
-
-          <p class="signature">
-            — Jack
-          </p>
-
-        </div>
-
+      <div class="end-note">
+        <span>THE END?</span>
+        <small>Maybe just the beginning.</small>
       </div>
 
     </section>
 
   </main>
 
-  <div class="tap-spark"></div>
-
   <script src="script.js"></script>
-
 </body>
 </html>
